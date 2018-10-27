@@ -1,4 +1,4 @@
 from django.contrib import admin
-from diary.models import Post
+from diary.models import Diary
 
-admin.site.register(Post)
+admin.site.register(Diary)
