@@ -10,10 +10,41 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'diary/css/bootstrap4-retro.min.css' %} ">
 </head>
-<body>
+<body class="ht-body ht-tm-retro">
 
-{% block content %}
-{% endblock %}
+<div id="ht-tm-jumbotron">
+    <div class="jumbotron bg-secondary text-center text-danger mb-0 radius-0 ht-tm-jumbotron">
+        <div class="container">
+            <div class="ht-tm-header">
+                <h1 class="display-1 text-uppercase">Diary</h1>
+            </div>
+
+            <a href="{% url 'diary:add' %}" class="btn btn-danger btn-lg m-2 text-secondary btn-ht-dl-message">
+                <span>日記を追加する</span>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<div class="ht-main">
+    <div class="ht-tm-wrapper">
+        <div class="container ht-tm-container">
+            <div class="pt-5">
+            </div>
+            <div class="row">
+                <div class="col-xl-18">
+                    <div id="ht-tm-maincolumn" class="ht-tm-maincolumn">
+                        <div class="ht-tm-componentsblock">
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

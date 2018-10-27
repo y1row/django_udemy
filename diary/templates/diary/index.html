@@ -1,14 +1,14 @@
 {% extends 'diary/base.html' %}
 
 {% block content %}
-<div id="ht-tm-jumbotron">
-  <div class="jumbotron bg-secondary text-center text-danger mb-0 radius-0 ht-tm-jumbotron">
-    <div class="container">
-      <div class="ht-tm-header">
-        <h1 class="display-1 text-uppercase">Diary</h1>
-        <span class="lead">Udemyで学ぶDjangoアプリケーション</span>
-      </div>
+    <div class="ht-tm-cat">
+        {% for diary in diary_list %}
+            <h5 class="ht-tm-cat-title">{{ diary.created_at }}</h5>
+            <div class="ht-tm-element jumbotron">
+                <h1 class="display-3">{{ diary.title }}</h1>
+                <hr class="my-4">
+                <p class="lead">{{ diary.text }}</p>
+            </div>
+        {% endfor %}
     </div>
-  </div>
-</div>
 {% endblock %}
