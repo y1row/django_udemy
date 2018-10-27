@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
 
 def index(request):
-    return HttpResponse('こんにちわ')
+    return render(request, 'diary/index.html')
