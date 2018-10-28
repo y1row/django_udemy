@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views import generic
 
 from diary.forms import DiaryCreateForm
 from diary.models import Diary
 
 
-def index(request):
-    context = {
-        'diary_list': Diary.objects.all().order_by('-created_at'),
-    }
-    return render(request, 'diary/index.html', context)
+class IndexView(generic.ListView):
+    model = Diary
 
 
 def add(request):
