@@ -7,6 +7,7 @@ from diary.models import Diary
 
 class IndexView(generic.ListView):
     model = Diary
+    queryset = Diary.objects.all().order_by('-created_at')
 
 
 class AddView(generic.CreateView):
