@@ -11,3 +11,4 @@ class Diary(models.Model):
     class Meta:
         verbose_name = '日記'
         verbose_name_plural = '日記'
+

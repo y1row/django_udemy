@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views import generic
 
 from diary.forms import DiaryCreateForm
@@ -9,26 +9,13 @@ class IndexView(generic.ListView):
     model = Diary
 
 
-def add(request):
-    form = DiaryCreateForm(request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('diary:index')
-
-    context = {
-        'form': form
-    }
-    return render(request, 'diary/input.html', context)
+class AddView(generic.CreateView):
+    model = Diary
+    form_class = DiaryCreateForm
+    success_url = reverse_lazy('diary:index')
 
 
-def update(request, pk):
-    diary = get_object_or_404(Diary, pk=pk)
-    form = DiaryCreateForm(request.POST or None, instance=diary)
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('diary:index')
-
-    context = {
-        'form': form
-    }
-    return render(request, 'diary/input.html', context)
+class UpdateView(generic.UpdateView):
+    model = Diary
+    form_class = DiaryCreateForm
+    success_url = reverse_lazy('diary:index')
