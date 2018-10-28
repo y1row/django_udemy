@@ -20,4 +20,4 @@ def add(request):
     context = {
         'form': DiaryCreateForm()
     }
-    return render(request, 'diary/add.html', context)
+    return render(request, 'diary/input.html', context)
