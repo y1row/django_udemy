@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from diary.forms import DiaryCreateForm
 from diary.models import Diary
@@ -18,6 +18,19 @@ def add(request):
         return redirect('diary:index')
 
     context = {
-        'form': DiaryCreateForm()
+        'form': form
+    }
+    return render(request, 'diary/input.html', context)
+
+
+def update(request, pk):
+    diary = get_object_or_404(Diary, pk=pk)
+    form = DiaryCreateForm(request.POST or None, instance=diary)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        return redirect('diary:index')
+
+    context = {
+        'form': form
     }
     return render(request, 'diary/input.html', context)
