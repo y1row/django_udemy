@@ -5,12 +5,14 @@
         {% for diary in diary_list %}
             <h5 class="ht-tm-cat-title">{{ diary.created_at }}</h5>
             <div class="ht-tm-element jumbotron">
-                <h1 class="display-3">{{ diary.title }}</h1>
-                <p class="lead">{{ diary.text }}</p>
-                <a class="btn btn-primary float-right" href="{% url 'diary:delete' diary.pk %}"
-                   role="button">削除する</a>
-                <a class="btn btn-primary float-right mx-4" href="{% url 'diary:update' diary.pk %}"
-                   role="button">編集する</a>
+                <h1 class="display-5">{{ diary.title }}</h1>
+                <p>{{ diary.text }}</p>
+                <p class="lead text-right">
+                    <a class="btn btn-primary" href="{% url 'diary:update' diary.pk %}"
+                       role="button">編集する</a>
+                    <a class="btn btn-primary" href="{% url 'diary:delete' diary.pk %}"
+                       role="button">削除する</a>
+                </p>
             </div>
         {% endfor %}
     </div>
