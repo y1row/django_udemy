@@ -19,3 +19,8 @@ class UpdateView(generic.UpdateView):
     model = Diary
     form_class = DiaryCreateForm
     success_url = reverse_lazy('diary:index')
+
+
+class DeleteView(generic.DeleteView):
+    model = Diary
+    success_url = reverse_lazy('diary:index')
